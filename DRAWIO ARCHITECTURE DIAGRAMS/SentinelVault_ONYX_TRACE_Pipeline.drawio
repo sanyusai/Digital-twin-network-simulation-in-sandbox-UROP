@@ -1,0 +1,163 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="SentinelVault-ONYX-TRACE Pipeline" id="pipeline1">
+    <mxGraphModel dx="1026" dy="632" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="1490" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=13;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;spacingTop=6;" value="STAGE 0 — ENTRY (Network Gateway Chokepoints)" vertex="1">
+          <mxGeometry height="100" width="860" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=13;fillColor=#e8f0fe;strokeColor=#4a86c8;align=left;spacingLeft=8;spacingTop=6;" value="PRE-EXPLOITATION (O-NYX)" vertex="1">
+          <mxGeometry height="470" width="860" x="20" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=13;fillColor=#fdf2e3;strokeColor=#d79b00;align=left;spacingLeft=8;spacingTop=6;" value="MID-EXPLOITATION — triggered only by a Medium trust score (O-NYX)" vertex="1">
+          <mxGeometry height="400" width="860" x="20" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=13;fillColor=#eae3fd;strokeColor=#9673a6;align=left;spacingLeft=8;spacingTop=6;" value="POST-EXPLOITATION — TRACE" vertex="1">
+          <mxGeometry height="400" width="860" x="20" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="gw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=11;" value="Email Gateway / MTA   •   Web Proxy   •   DNS Resolver   •   CASB   •   Internal File-Share Filter   •   USB Control" vertex="1">
+          <mxGeometry height="50" width="680" x="110" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l1title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=12;fontStyle=1;" value="Layer 1 — Fast Pre-Screening Checks" vertex="1">
+          <mxGeometry height="24" width="820" x="40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="l1a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Hash Reputation Lookup&#xa;(MD5/SHA-1/SHA-256)" vertex="1">
+          <mxGeometry height="60" width="195" x="40" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="l1b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="YARA Rule Matching&#xa;(packer/family signatures)" vertex="1">
+          <mxGeometry height="60" width="195" x="245" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="l1c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="ML Static Classifier&#xa;(entropy, PE headers, imports)" vertex="1">
+          <mxGeometry height="60" width="195" x="450" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="l1d" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Phishing-URL Check&#xa;(domain age, SSL, typosquat)" vertex="1">
+          <mxGeometry height="60" width="195" x="655" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="l2title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=12;fontStyle=1;" value="Layer 2 — Parallel Deep-Inspection Systems" vertex="1">
+          <mxGeometry height="24" width="820" x="40" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="l2a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Static Analysis (deep)&#xa;control-flow, macros, signatures" vertex="1">
+          <mxGeometry height="60" width="195" x="40" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="l2b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="CDR&#xa;strip &amp; rebuild active content" vertex="1">
+          <mxGeometry height="60" width="195" x="245" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="l2c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Honeypot Network Observer&#xa;decoy credentials / canaries" vertex="1">
+          <mxGeometry height="60" width="195" x="450" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="l2d" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Ransomware &quot;Time Machine&quot;&#xa;I/O + entropy anomaly snapshots" vertex="1">
+          <mxGeometry height="60" width="195" x="655" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" value="Layer 3 — Attacker-Intent Engine&#xa;Weighted signal fusion  →  one 0–100 Trust/Risk Score" vertex="1">
+          <mxGeometry height="55" width="520" x="190" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Layer 4&#xa;Policy / Decision&#xa;Engine" vertex="1">
+          <mxGeometry height="90" width="170" x="365" y="475" as="geometry" />
+        </mxCell>
+        <mxCell id="pass" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="PASS&#xa;Low score (0–30)&#xa;delivered normally" vertex="1">
+          <mxGeometry height="55" width="190" x="40" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="block" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" value="BLOCK&#xa;High score (71–100)&#xa;quarantined, SOC alerted" vertex="1">
+          <mxGeometry height="55" width="190" x="670" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fdf2e3;strokeColor=#d79b00;fontSize=12;" value="Digital-Twin Instantiation&#xa;Fake Domain Controller • File Server • Email Server • Database • Backup Server • Employee Endpoints • Detonation-Point VM" vertex="1">
+          <mxGeometry height="70" width="740" x="90" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fdf2e3;strokeColor=#d79b00;fontSize=12;" value="Covert Hypervisor-Level AI Agent (VMI)&#xa;memory introspection • syscalls • process creation • network capture • fs/registry changes&#xa;→ Behaviour Watcher · Intent Classifier · ATT&amp;CK Mapper · Risk Scorer" vertex="1">
+          <mxGeometry height="70" width="740" x="90" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fdf2e3;strokeColor=#d79b00;fontSize=12;" value="Detonation → Full-Run Behavioural Observation → Malware-Type Classification → Blast-Radius Analysis → Containment Recommendation (human-approved)" vertex="1">
+          <mxGeometry height="60" width="740" x="90" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" value="Disposal (unconditional, every run): VM termination • memory zeroing • disk cryptoshredding • VPC teardown" vertex="1">
+          <mxGeometry height="55" width="740" x="90" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae3fd;strokeColor=#9673a6;fontSize=12;" value="Evidence Harvest &amp; Sealing&#xa;memory dump + PCAP + filesystem diff + agent report → hash-chained &amp; signed → Immutable Audit Store" vertex="1">
+          <mxGeometry height="60" width="740" x="90" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" value="Verified Disposal + Signed Disposal Certificate" vertex="1">
+          <mxGeometry height="55" width="740" x="90" y="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eae3fd;strokeColor=#9673a6;fontSize=12;" value="Intelligence Extraction &amp; Distribution&#xa;IOC package + ATT&amp;CK map + TTP-similarity + Zero-Day flag (reviewer-gated)&#xa;→ STIX/TAXII → MISP (instant, or ~90-day embargo)" vertex="1">
+          <mxGeometry height="65" width="740" x="90" y="1245" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" value="Twin Rebuild — persists: Immutable Audit Store • Threat-Intel DB • Retrained AI Classifier" vertex="1">
+          <mxGeometry height="55" width="740" x="90" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="e500" edge="1" parent="1" source="gw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l1a" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e501" edge="1" parent="1" source="gw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l1b" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e502" edge="1" parent="1" source="gw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l1c" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e503" edge="1" parent="1" source="gw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l1d" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e504" edge="1" parent="1" source="l1a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e505" edge="1" parent="1" source="l1b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e506" edge="1" parent="1" source="l1c" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e507" edge="1" parent="1" source="l1d" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e508" edge="1" parent="1" source="l2a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e509" edge="1" parent="1" source="l2b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e510" edge="1" parent="1" source="l2c" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e511" edge="1" parent="1" source="l2d" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e512" edge="1" parent="1" source="l3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="l4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e513" edge="1" parent="1" source="l4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="pass" value="Low 0–30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e514" edge="1" parent="1" source="l4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="block" value="High 71–100">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e515" edge="1" parent="1" source="l4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="m1" value="Medium 31–70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e516" edge="1" parent="1" source="m1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="m2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e517" edge="1" parent="1" source="m2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="m3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e518" edge="1" parent="1" source="m3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="m4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e519" edge="1" parent="1" source="m4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="p1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e520" edge="1" parent="1" source="p1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="p2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e521" edge="1" parent="1" source="p2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="p3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e522" edge="1" parent="1" source="p3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" target="p4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e523" edge="1" parent="1" source="p4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;dashed=1;strokeColor=#9673a6;" target="m1" value="next detonation cycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
